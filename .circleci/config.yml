@@ -1,3 +1,22 @@
-version: 2.1
+jobs:
+  install_authenticate:
+    executor: sfdx/default
+    steps:
+      - checkout
+      - sfdx/install
+      - sfdx/auth:
+          defaultusername: user@email.com
+      - run:
+          command: >
+            echo You now have access to the sfdx cli and may execute commands
+            against it.
+
+            sfdx force:auth:list
+          name: Run your SFDX commands here
 orbs:
-  salesforce-sfdx: circleci/salesforce-sfdx@1.0.0
+  sfdx: circleci/salesforce-sfdx@x.y
+version: 2.1
+workflows:
+  basic-test:
+    jobs:
+      - install_authenticate
