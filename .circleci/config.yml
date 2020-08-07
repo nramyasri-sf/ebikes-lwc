@@ -1,22 +1,19 @@
 jobs:
-  create-open-delete:
+  install_authenticate:
     executor: sfdx/default
     steps:
       - checkout
       - sfdx/install
       - sfdx/auth:
           defaultusername: rn@su-blitz.org
-      - sfdx/scratch-create:
-          scratch-alias: circleci
-          scratch-config: ./config/project-scratch-def.json
-      - sfdx/scratch-open:
-          scratch-alias: circleci
-      - sfdx/scratch-delete:
-          scratch-alias: circleci
+      - run:
+          command: >
+            sfdx force:org:create -f ./config/project-scratch-def.json
+          name: List Auth files
 orbs:
   sfdx: circleci/salesforce-sfdx@1.0.0
 version: 2.1
 workflows:
   basic-test:
     jobs:
-      - create-open-delete
+      - install_authenticate
