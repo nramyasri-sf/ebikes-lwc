@@ -1,18 +1,22 @@
 jobs:
-  create-open:
+  create-open-delete:
     executor: sfdx/default
     steps:
       - checkout
       - sfdx/install
       - sfdx/auth:
-          defaultusername: rn@su-blitz.org
+          defaultusername: user@email.com
       - sfdx/scratch-create:
-              scratch-alias: circleci
-              scratch-config: ./config/project-scratch-def.json
+          scratch-alias: circleci
+          scratch-config: ./config/project-scratch-def.json
+      - sfdx/scratch-open:
+          scratch-alias: circleci
+      - sfdx/scratch-delete:
+          scratch-alias: circleci
 orbs:
-  sfdx: circleci/salesforce-sfdx@1.0.0
+  sfdx: circleci/salesforce-sfdx@x.y
 version: 2.1
 workflows:
-  test-workflow:
+  basic-test:
     jobs:
-      - create-open
+      - create-open-delete
