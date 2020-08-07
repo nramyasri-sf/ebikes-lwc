@@ -8,11 +8,11 @@ jobs:
           defaultusername: rn@su-blitz.org
       - run:
           command: >
-            sfdx force:org:create -f ./config/project-scratch-def.json -a test
+            sfdx force:org:create -f ./config/project-scratch-def.json -a test1
           name: Create a new org
       - run:
          command: >
-           sfdx force:source:deploy -p ./force-app/main/default/aura -u test
+           sfdx force:source:deploy -p ./force-app/main/default/aura -u test1
          name: Deploy to an org   
 orbs:
   sfdx: circleci/salesforce-sfdx@2.0.0
