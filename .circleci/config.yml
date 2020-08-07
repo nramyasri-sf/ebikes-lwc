@@ -8,13 +8,14 @@ jobs:
           defaultusername: rn@su-blitz.org
       - run:
           command: >
-            sfdx force:org:create -f ./config/project-scratch-def.json
+            echo You now have access to the sfdx cli and may execute commands
+            against it.
+            sfdx force:auth:list
           name: Run your SFDX commands here
-
 orbs:
   sfdx: circleci/salesforce-sfdx@1.0.0
 version: 2.1
 workflows:
-  test-auth:
+  basic-test:
     jobs:
       - install_authenticate
