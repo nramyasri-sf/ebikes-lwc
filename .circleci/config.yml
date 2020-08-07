@@ -10,6 +10,16 @@ jobs:
           command: >
             sfdx force:auth:list
           name: Run your SFDX commands here
+    create-push:
+    executor: sfdx/default
+    steps:
+      - checkout
+      - sfdx/install
+      - sfdx/auth:
+          defaultusername: rn@su-blitz.org
+      scratch-alias: circleci
+      scratch-config: ./config/project-scratch-def.json    
+
 orbs:
   sfdx: circleci/salesforce-sfdx@1.0.0
 version: 2.1
@@ -17,3 +27,4 @@ workflows:
   test-auth:
     jobs:
       - install_authenticate
+      - create-push
