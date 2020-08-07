@@ -15,7 +15,7 @@ jobs:
            sfdx force:source:deploy -p ./force-app/main/default/aura -u test
          name: Deploy to an org   
 orbs:
-  sfdx: circleci/salesforce-sfdx@1.0.0
+  sfdx: circleci/salesforce-sfdx@2.0.0
 version: 2.1
 workflows:
   basic-test:
