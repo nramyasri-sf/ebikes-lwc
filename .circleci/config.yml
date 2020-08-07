@@ -13,9 +13,9 @@ jobs:
             sfdx force:auth:list
           name: Run your SFDX commands here
 orbs:
-  sfdx: circleci/salesforce-sfdx@2.0.0
+  sfdx: circleci/salesforce-sfdx@1.0.0
 version: 2.1
 workflows:
-  basic-test:
+  test-auth:
     jobs:
       - install_authenticate
