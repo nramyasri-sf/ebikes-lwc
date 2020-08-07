@@ -8,8 +8,6 @@ jobs:
           defaultusername: rn@su-blitz.org
       - run:
           command: >
-            echo You now have access to the sfdx cli and may execute commands
-            against it.
             sfdx force:auth:list
           name: Run your SFDX commands here
 orbs:
