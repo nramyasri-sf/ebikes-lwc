@@ -8,11 +8,12 @@ jobs:
           defaultusername: rn@su-blitz.org
       - run:
           command: >
-            sfdx force:org:create -f ./config/project-scratch-def.json -a testOrg
-          name: List Auth files
+            sfdx force:org:create -f ./config/project-scratch-def.json -a test
+          name: Create a new org
       - run:
          command: >
-           sfdx force:source:push -u testOrg    
+           sfdx force:source:deploy -p ./force-app/main/default/classes -u test
+         name: Deploy to an org   
 orbs:
   sfdx: circleci/salesforce-sfdx@1.0.0
 version: 2.1
